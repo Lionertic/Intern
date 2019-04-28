@@ -1,3 +1,8 @@
+h1{
+  position: fixed;
+  top:35vh;
+  left:45vw;
+}
 .intro{
     position: fixed;
     left:84vw;

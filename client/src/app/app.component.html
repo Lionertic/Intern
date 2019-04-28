@@ -1,2 +1,3 @@
-<a class="intro" routerLink="/users" routerLinkActive="active"><button class="button"><span>View All Users</span></button></a>
+<h1 *ngIf="isView">Welcome</h1>
+<a class="intro" routerLink="/users" (click)="change()" routerLinkActive="active"><button class="button"><span>View All Users</span></button></a>
 <router-outlet></router-outlet>

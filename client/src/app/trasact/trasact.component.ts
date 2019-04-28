@@ -3,6 +3,7 @@ import {TransactService} from '../transact.service'
 import {Router} from '@angular/router';
 import { UsersService } from '../users.service';
 import { User } from '../User';
+import { AppComponent } from '../app.component';
 @Component({
   selector: 'app-trasact',
   templateUrl: './trasact.component.html',
@@ -31,7 +32,8 @@ export class TrasactComponent implements OnInit {
       .subscribe((res)=>{
         
       });
-      this.router.navigate(['/']);
+
+      this.router.navigateByUrl('/users');
   }
   ngOnInit() {
     this.usersService.getUsers()
