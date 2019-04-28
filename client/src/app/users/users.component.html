@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+      <div *ngFor="let user of users">
+        <a routerLink="/user/{{ user._id }}" routerLinkActive="active">
+          <div class="col-md-4">
+            {{ user.Name }}
+          </div>
+          <div class="col-md-4">
+            {{ user.Balance }}
+          </div>
+          <div class="col-md-4">
+            {{ user.NOTR }}
+          </div>
+        </a>
+      </div>
+  </div>
+</div>

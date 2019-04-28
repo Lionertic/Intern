@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const route = require('./routes/route');
 const path = require('path');
+const cors = require('cors');
+
 const db = 'mongodb://127.0.0.1:27017/Transfer';
 const app = express();
 const port = 3000;
@@ -19,6 +21,8 @@ mongoose.connection.on('error',(err)=>{
 });
 
 app.use(bodyParser.json());
+
+app.use(cors());
 
 app.use(express.static(path.join(__dirname,'index.html')));
 

@@ -4,7 +4,11 @@ const Transaction = require('../models/Transaction');
 
 const route = express.Router();
 
+route.get('/',(req,res)=>{
+    res.send("success");
+})
 route.post('/transfer/:id',(req,res,next)=>{
+    console.log("now");
     let newTransaction=new Transaction({
         From:req.params.id,
         To:req.body.To,
@@ -15,7 +19,9 @@ route.post('/transfer/:id',(req,res,next)=>{
     User.findOne({_id:req.params.id},(err,u)=>{
         var user=new User(u);        
         if(user.Balance >= req.body.Credit){
-            User.updateOne({_id:req.params.id},{Balance:user.Balance-req.body.Credit,NOTR:user.NOTR+1},(err,result)=>{
+            var newBalanc=parseInt(user.Balance)-parseInt(req.body.Credit);
+            var newNOTR = parseInt(user.NOTR) +1;
+            User.updateOne({_id:req.params.id},{Balance:newBalanc,NOTR:newNOTR},(err,result)=>{
                 if(err)
                     console.log("Error updating");
                 else
@@ -27,6 +33,17 @@ route.post('/transfer/:id',(req,res,next)=>{
                 else
                     console.log("Successfully saved");
             });
+            User.findOne({_id:req.body.To},(er,u1)=>{
+                var user1= new User(u1);
+                var newBalanc=parseInt(user1.Balance)+parseInt(req.body.Credit);
+                var newNOTR = parseInt(user1.NOTR) +1;
+                User.updateOne({_id:req.body.To},{Balance:newBalanc,NOTR:newNOTR},(err,result)=>{
+                    if(err)
+                        console.log("Error updating");
+                    else
+                        console.log("Success updating"); 
+                }); 
+            })
         }
         else
             console.log("Insufficieant Balance");        
@@ -35,7 +52,17 @@ route.post('/transfer/:id',(req,res,next)=>{
 
 route.get('/transactions/:id',(req,res,next)=>{
     Transaction.find({From:req.params.id},(err,transact)=>{
-        res.json(transact);
+        User.find((err,users)=>{
+            var i =0;
+            users.forEach(user => {
+                for(var i=0;i<transact.length;i++){
+                    if(transact[i].To.localeCompare(user._id)==0){
+                        transact[i].To=user.Name;
+                    }
+                }
+            });
+                res.json(transact);
+        });
     })
 });
 
