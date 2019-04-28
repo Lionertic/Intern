@@ -50,10 +50,9 @@ route.post('/transfer/:id',(req,res,next)=>{
     })
 });
 
-route.get('/transactions/:id',(req,res,next)=>{
+route.get('/transactionsTo/:id',(req,res,next)=>{
     Transaction.find({From:req.params.id},(err,transact)=>{
         User.find((err,users)=>{
-            var i =0;
             users.forEach(user => {
                 for(var i=0;i<transact.length;i++){
                     if(transact[i].To.localeCompare(user._id)==0){
@@ -65,7 +64,20 @@ route.get('/transactions/:id',(req,res,next)=>{
         });
     })
 });
-
+route.get('/transactionsFrom/:id',(req,res,next)=>{
+    Transaction.find({To:req.params.id},(err,transact)=>{
+        User.find((err,users)=>{
+            users.forEach(user => {
+                for(var i=0;i<transact.length;i++){
+                    if(transact[i].From.localeCompare(user._id)==0){
+                        transact[i].From=user.Name;
+                    }
+                }
+            });
+                res.json(transact);
+        });
+    })
+});
 route.post('/transaction',(req,res,next)=>{
     let newTransaction=new Transaction({
         From:req.body.From,

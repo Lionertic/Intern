@@ -8,7 +8,11 @@ export class TransactionService {
 
   constructor(private http:HttpClient) { }
 
-  getTransactions(id){
-    return this.http.get<Transaction[]>('http://localhost:3000/transactions/'+id);
+  getTransactionsFrom(id){
+    return this.http.get<Transaction[]>('http://localhost:3000/transactionsFrom/'+id);
+  }
+
+  getTransactionsTo(id){
+    return this.http.get<Transaction[]>('http://localhost:3000/transactionsTo/'+id);
   }
 }

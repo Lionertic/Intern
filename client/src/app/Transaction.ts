@@ -3,5 +3,5 @@ export class Transaction{
     From:string;
     To:string;
     Credit:number;
-    Date:number
+    Date:Date;
 }

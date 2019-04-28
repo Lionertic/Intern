@@ -29,9 +29,9 @@ export class TrasactComponent implements OnInit {
     };
     this.transactService.insertTransaction(newTransaction)
       .subscribe((res)=>{
-          console.log(res);
-          
+        
       });
+      this.router.navigate(['/']);
   }
   ngOnInit() {
     this.usersService.getUsers()

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {Transaction} from '../Transaction';
 import {TransactionService} from '../transaction.service';
-import { UsersService } from '../users.service';
-import { User } from '../User';
  
 @Component({
   selector: 'app-user',
@@ -12,19 +10,19 @@ import { User } from '../User';
 })
 export class UserComponent implements OnInit {
 
-  transactions:Transaction[];
+  transactionsFrom:Transaction[];
+  transactionsTo:Transaction[];
   id:string;
-  users:User[];
 
-  constructor(private router:Router,private transactionService:TransactionService,private usersService:UsersService) { }
+  constructor(private router:Router,private transactionService:TransactionService) { }
 
   ngOnInit() {
     this.id=this.router.url.substring(6);
-    this.usersService.getUsers()
-    .subscribe( users => {
-      this.users=users;
-      this.transactionService.getTransactions(this.id)
-        .subscribe(transaction => this.transactions=transaction);
-    });
+    
+    this.transactionService.getTransactionsFrom(this.id)
+      .subscribe(transaction => this.transactionsFrom=transaction);
+
+    this.transactionService.getTransactionsTo(this.id)
+      .subscribe(transaction => this.transactionsTo=transaction);
   }
 }
