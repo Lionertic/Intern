@@ -1,0 +1,58 @@
+<div class="container">
+    <div *ngIf="transactionsTo.length>0" class="row">
+        <h2>Debits</h2>
+    </div>
+    <div class="row" *ngIf="transactionsTo.length>0">
+        <div class="col-md-3">
+            <h3>To</h3>
+        </div>
+        <div class="col-md-3">
+            <h2>Money</h2>
+        </div>
+        <div class="col-md-3">
+            <h2>Date</h2>
+        </div>
+    </div>
+    <div *ngFor="let transaction of transactionsTo" >
+        <div class="row">
+            <div class="col-md-3">
+              {{ transaction.To }}
+            </div>
+            <div class="col-md-3">
+                {{ transaction.Credit }}
+            </div>
+            <div class="col-md-3">
+                {{ transaction.Date }}
+            </div>
+        </div>
+    </div>
+    <div *ngIf="transactionsFrom.length>0" class="row">
+        <h2>Credits</h2>
+    </div>
+    <div class="row" *ngIf="transactionsFrom.length>0">
+        <div class="col-md-3">
+            <h3>To</h3>
+        </div>
+        <div class="col-md-3">
+            <h2>Money</h2>
+        </div>
+        <div class="col-md-3">
+            <h2>Date</h2>
+        </div>
+    </div>
+    <div *ngFor="let transaction of transactionsFrom">
+        <div class="row">
+            <div class="col-md-3">
+                {{ transaction.From }}
+            </div>
+            <div class="col-md-3">
+                {{ transaction.Credit }}
+            </div>
+            <div class="col-md-3">
+                {{ transaction.Date }}
+            </div>
+        </div>
+    </div>    
+    <a routerLink="/transfer/{{ id }}" routerLinkActive="active"><button class="button">Transfer</button></a>
+  </div>
+  

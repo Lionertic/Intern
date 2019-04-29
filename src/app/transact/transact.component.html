@@ -1,0 +1,13 @@
+<div class="container">
+  <h2 class="page-header">Transfer</h2>
+  <form (submit)="transfer()" class=" transact">
+    <select class="form-control"  id="power" required [(ngModel)]="To" name="To">
+    <option *ngFor="let user of users" [value]="user._id">{{user.Name}}</option>
+    </select>
+    <div class="form-group">
+        <label>Credits</label>
+        <input type="text" [(ngModel)]="Credit" name="Credit" class="form-control">
+    </div>
+    <input type="submit" class="btn btn btn-success" value="Send">
+  </form>
+</div>
