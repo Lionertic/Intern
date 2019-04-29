@@ -1,8 +1,7 @@
 Intern<br>
 &nbsp;&nbsp;&nbsp;This is a MEAN Stack Development Project.<br>
 &nbsp;&nbsp;&nbsp;First start the mongodb service in your computer.<br>
-&nbsp;&nbsp;&nbsp;Run server using "nodemon" if nodemon installed <br>
-&nbsp;&nbsp;&nbsp;Else start using "node server.js" by installing node.js<br>
+&nbsp;&nbsp;&nbsp;Run server using "nodemon" if nodemon installed . Else start using "node server.js" by installing node.js<br>
 
 DEMO VIDEO https://github.com/Lionertic/Intern/raw/master/Demo/video_demo.mp4
 
