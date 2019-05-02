@@ -4,9 +4,9 @@ const bodyParser = require('body-parser');
 const route = require('./servers/routes/route');
 const path = require('path');
 
-const db = 'mongodb://127.0.0.1:27017/Transfer';
+const db = 'mongodb+srv://uday:illdie2morow@intern-lwbus.mongodb.net/Transfer';
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 5000
 
 mongoose.connect(db,{useNewUrlParser:true});
 
@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname,'dist/Intern')));
 app.use('/now',route);
 
 app.get('*',(req,res)=>{
-    res.sendFile(path.join(__dirname,'dist/client/index.html'));
+    res.sendFile(path.join(__dirname,'dist/Intern/index.html'));
 })
 app.use(bodyParser.urlencoded({extended:true}));
 

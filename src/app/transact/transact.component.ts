@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import {TransactService} from '../transact.service'
 import {Router} from '@angular/router';
 import { UsersService } from '../users.service';
 import { User } from '../User';
 import { AppComponent } from '../app.component';
+
 @Component({
   selector: 'app-trasact',
   templateUrl: './transact.component.html',
@@ -33,7 +34,7 @@ export class TransactComponent implements OnInit {
         
       });
 
-      this.router.navigateByUrl('/users');
+      this.router.navigateByUrl('/users',);
   }
   ngOnInit() {
     this.usersService.getUsers()

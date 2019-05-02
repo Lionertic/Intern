@@ -1,4 +1,7 @@
 <div class="container">
+    <div *ngIf="transactionsTo.length==0&&transactionsFrom.length==0" class="row">
+        <h2>No Transactions Made</h2>
+    </div>
     <div *ngIf="transactionsTo.length>0" class="row">
         <h2>Debits</h2>
     </div>

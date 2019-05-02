@@ -7,7 +7,6 @@ const route = express.Router();
 
 
 route.post('/transfer/:id',(req,res,next)=>{
-    console.log("now");
     let newTransaction=new Transaction({
         From:req.params.id,
         To:req.body.To,
@@ -46,7 +45,9 @@ route.post('/transfer/:id',(req,res,next)=>{
         }
         else
             console.log("Insufficieant Balance");        
+
     })
+    res.redirect('/');
 });
 
 route.get('/transactionsTo/:id',(req,res,next)=>{
@@ -90,6 +91,7 @@ route.post('/transaction',(req,res,next)=>{
         else
             console.log("Successfully saved");
     });
+
 });
 
 route.delete('/transaction/:id',(req,res,next)=>{
