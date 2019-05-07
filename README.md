@@ -1,7 +1,5 @@
 Intern<br>
 &nbsp;&nbsp;&nbsp;This is a MEAN Stack Development Project.<br>
-&nbsp;&nbsp;&nbsp;First start the mongodb service in your computer.<br>
-&nbsp;&nbsp;&nbsp;Run server using "nodemon" if nodemon installed . Else start using "node server.js" by installing node.js<br>
 
 IT IS HOSTED ON: https://hidden-dusk-39316.herokuapp.com/ <br>
 DEMO VIDEO https://www.youtube.com/watch?v=4YKiYWPesVw
