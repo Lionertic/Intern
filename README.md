@@ -13,3 +13,4 @@ DEMO VIDEO https://github.com/Lionertic/Intern/raw/master/Demo/video_demo.mp4
   <img src="Demo/user_transaction.png" width="800" height="401">
   <img src="Demo/users_list.png" width="800" height="401">
 </p>
+<video src="Demo/video_demo.mp4" width="800" height="400" controls preload></video>
